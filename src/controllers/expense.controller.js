@@ -1,13 +1,14 @@
-const createExpense = (req, res) => {
-  const { title, amount } = req.body;
+const { createExpense } = require('../services/expense.service');
 
-  if (!title || !amount) {
-    return res.status(400).json({ error: 'Title and amount are required' });
+const createExpenseController = (req, res, next) => {
+  try {
+    const expense = createExpense(req.body);
+    res.status(201).json({ message: 'Expense created', data: expense });
+  } catch (error) {
+    next(error);
   }
-
-  res.status(201).json({ message: 'Expense created', data: { title, amount } });
 };
 
 module.exports = {
-  createExpense,
+  createExpenseController,
 };
