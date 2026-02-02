@@ -1,4 +1,4 @@
-const createExpense = ({ title, amount }) => {
+const createExpense = async ({ title, amount }) => {
   if (!title || !amount) {
     const error = new Error('Title and amount are required');
     error.statusCode = 400;
