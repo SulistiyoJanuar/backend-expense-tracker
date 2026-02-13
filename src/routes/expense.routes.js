@@ -1,10 +1,13 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
   createExpenseController,
-} = require('../controllers/expense.controller');
+  getAllExpensesController,
+} from '../controllers/expense.controller.js';
+import validateExpense from '../middlewares/validate-expense.middleware.js';
 
 const router = express.Router();
 
-router.post('/expenses', createExpenseController);
+router.post('/expenses', validateExpense, createExpenseController);
+router.get('/expenses', getAllExpensesController);
 
-module.exports = router;
+export default router;

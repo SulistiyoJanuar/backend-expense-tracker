@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = 3000;
 
-const expenseRoutes = require('./routes/expense.routes');
-const errorHandler = require('./middlewares/error-handler.middleware');
+import expenseRoutes from './routes/expense.routes.js';
+import errorHandler from './middlewares/error-handler.middleware.js';
 
 app.use(express.json());
 

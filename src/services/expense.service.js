@@ -1,20 +1,20 @@
-const createExpense = async ({ title, amount }) => {
-  if (!title || !amount) {
-    const error = new Error('Title and amount are required');
-    error.statusCode = 400;
-    throw error;
-  }
+const expenses = [];
 
+const createExpense = async (payload) => {
   const expense = {
     id: Date.now(),
-    title,
-    amount,
+    title: payload.title,
+    amount: payload.amount,
     date: new Date(),
   };
+
+  expenses.push(expense);
 
   return expense;
 };
 
-module.exports = {
-  createExpense,
+const getAllExpenses = async () => {
+  return expenses;
 };
+
+export { createExpense, getAllExpenses };
